@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './order_list.dart';
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -27,6 +29,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var pizzaOrders = const [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,18 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Current Pizza Orders',
-            ),
-            Text(
-              'I will be a pizza order!',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
+        child: OrderList(),
       ),
     );
   }
