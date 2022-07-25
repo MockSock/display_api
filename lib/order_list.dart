@@ -11,6 +11,7 @@ class OrderList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      padding: const EdgeInsets.all(4),
       itemCount: pizza.length,
       itemBuilder: (BuildContext context, int orderIndex) {
         return PizzaOrder(pizza[orderIndex]);
