@@ -1,3 +1,10 @@
 import 'package:flutter/material.dart';
 
-class PizzaOrder extends StatelessWidget {}
+import './pizza_model.dart';
+
+class PizzaOrder extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
