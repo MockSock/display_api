@@ -29,7 +29,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var pizzaOrders = const [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
