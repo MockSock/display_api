@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import './order_list.dart';
+import './services.dart';
+import './pizza_model.dart';
 
 void main() => runApp(const MyApp());
 
@@ -29,6 +31,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final Future<List<Pizza>> order;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +39,17 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: OrderList(),
+        child: FutureBuilder<List<Pizza>>(
+          future: order,
+          builder: (context, snapshot) {
+            if (snapshot.hasError) print(snapshot.error);
+            return snapshot.hasData
+                ? OrderList(snapshot.data)
+                : const Center(
+                    child: CircularProgressIndicator(),
+                  );
+          },
+        ),
       ),
     );
   }
