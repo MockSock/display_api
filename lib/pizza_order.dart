@@ -16,19 +16,22 @@ class PizzaOrder extends StatelessWidget {
         children: [
           // Showing of Orders
           Text(
-            style: TextStyle(fontSize: 30),
+            style: const TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+            ),
             '$pizzaOrder.orderId',
           ),
           Text(
-            style: TextStyle(fontSize: 30),
+            style: const TextStyle(fontSize: 30),
             '$pizzaOrder.size',
           ),
           Text(
-            style: TextStyle(fontSize: 30),
+            style: const TextStyle(fontSize: 30),
             '$pizzaOrder.crust',
           ),
           Text(
-            style: TextStyle(fontSize: 30),
+            style: const TextStyle(fontSize: 30),
             '$pizzaOrder.topping',
           ),
         ],
