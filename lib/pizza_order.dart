@@ -10,10 +10,28 @@ class PizzaOrder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(5),
+      padding: const EdgeInsets.all(5),
       height: 110,
       child: Row(
-        children: [],
+        children: [
+          // Showing of Orders
+          Text(
+            style: TextStyle(fontSize: 30),
+            '$pizzaOrder.orderId',
+          ),
+          Text(
+            style: TextStyle(fontSize: 30),
+            '$pizzaOrder.size',
+          ),
+          Text(
+            style: TextStyle(fontSize: 30),
+            '$pizzaOrder.crust',
+          ),
+          Text(
+            style: TextStyle(fontSize: 30),
+            '$pizzaOrder.topping',
+          ),
+        ],
       ),
     );
   }
