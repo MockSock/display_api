@@ -9,6 +9,12 @@ class PizzaOrder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      padding: EdgeInsets.all(5),
+      height: 110,
+      child: Row(
+        children: [],
+      ),
+    );
   }
 }
