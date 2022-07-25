@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 
+import './pizza_order.dart';
+import './pizza_model.dart';
+
 class OrderList extends StatelessWidget {
+  final List<Pizza> pizza;
+
+  OrderList(this.pizza);
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      itemCount: pizza.length,
       itemBuilder: (BuildContext context, int orderIndex) {
-        return Container(
-          height: 40,
-          color: Colors.amberAccent,
-          child: const Text('I will be a pizza order one day!'),
-        );
+        return PizzaOrder(pizza[orderIndex]);
       },
     );
   }
