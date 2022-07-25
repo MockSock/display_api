@@ -1,15 +1,27 @@
 import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:http/http.dart'; // gets you Response
 
 import './pizza_model.dart';
 
-Future<List<Pizza>> getPizzaOrders() async {
-  // uri links have to be parsed
-  Uri apiUri = Uri.parse('localhost:5000');
-  // it is now checking for it using a get method
-  final response = await http.get(apiUri);
-  // the response is decoded here
-  final responseData = json.decode(response.body);
-  // finally it is returned
-  return responseData;
+abstract class PizzaRepo {
+  getPizzaOrders();
+}
+
+class PizzaServices implements PizzaRepo {
+  // website
+  static const _apiUrl = 'localhost:5000';
+  // link after
+  static const String _storePizza = '/orders';
+  @override
+  Future<List<Pizza>> getPizzaOrders() async {
+    // fusion dance, localhost:5000/orders
+    // feels clunky
+    Uri uri = Uri.http(_apiUrl, _storePizza);
+    //
+    Response response = await http.get(uri);
+    // this will then convert it using the model file to
+    // the usable pizza object
+    List<Pizza> pizza = pizzaFromJSON(response.body);
+    return pizza;
+  }
 }
