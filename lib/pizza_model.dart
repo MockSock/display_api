@@ -1,3 +1,8 @@
+import 'dart:convert';
+
+List<Pizza> pizzaFromJSON(String str) =>
+    List<Pizza>.from(json.decode(str).map((x) => Pizza.fromJson(x)));
+
 class Pizza {
   final int orderId;
   final String size;
@@ -6,6 +11,10 @@ class Pizza {
 
   Pizza(this.orderId, this.size, this.crust, this.topping);
 
-  factory Pizza.fromJson(Map<String, dynamic> json) =>
-      Pizza(json['orderId'], json['size'], json['crust'], json['topping']);
+  factory Pizza.fromJson(Map<String, dynamic> json) => Pizza(
+        json['orderId'],
+        json['size'],
+        json['crust'],
+        json['topping'],
+      );
 }
