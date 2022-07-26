@@ -31,7 +31,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final Future<List<Pizza>> order;
+  Future<List<Pizza>> order;
+
+  @override
+  void initState() {
+    super.initState();
+    _getPizza();
+  }
+
+  _getPizza() async {
+    PizzaServices().getPizzaOrders;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
