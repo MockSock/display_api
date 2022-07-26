@@ -49,9 +49,8 @@ class _MyHomePageState extends State<MyHomePage> {
             if (snapshot.hasData) {
               return ListView.builder(
                 itemCount: snapshot.data!.length,
-                itemBuilder: (context, index) => ListTile(
-                  contentPadding: EdgeInsets.all(8),
-                  title: Text(snapshot.data![index].orderId.toString()),
+                itemBuilder: (context, index) => Container(
+                  padding: EdgeInsets.all(8),
                 ),
               );
             }
