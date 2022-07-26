@@ -21,7 +21,7 @@ class PizzaServices implements PizzaRepo {
     Response response = await http.get(uri);
     // this will then convert it using the model file to
     // the usable pizza object
-    List<Pizza> pizza = pizzaFromJSON(response.body);
+    List<Pizza> pizza = pizzaFromJSON(response.body).toList();
     return pizza;
   }
 }
