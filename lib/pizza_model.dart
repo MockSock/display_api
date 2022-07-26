@@ -9,12 +9,16 @@ class Pizza {
   final String crust;
   final String topping;
 
-  Pizza(this.orderId, this.size, this.crust, this.topping);
+  Pizza(
+      {required this.orderId,
+      required this.size,
+      required this.crust,
+      required this.topping});
 
   factory Pizza.fromJson(Map<String, dynamic> json) => Pizza(
-        json['orderId'],
-        json['size'],
-        json['crust'],
-        json['topping'],
+        orderId: json['orderId'],
+        size: json['size'],
+        crust: json['crust'],
+        topping: json['topping'],
       );
 }
