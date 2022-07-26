@@ -47,7 +47,23 @@ class _MyHomePageState extends State<MyHomePage> {
           builder: (context, snapshot) {
             if (snapshot.hasError) return Text(snapshot.error.toString());
             if (snapshot.hasData) {
-              return ListView.builder(itemBuilder: itemBuilder);
+              return ListView.builder(
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context, index) => Container(
+                  padding: const EdgeInsets.all(8),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        snapshot.data![index].orderId.toString(),
+                      ),
+                      Text(snapshot.data![index].size),
+                      Text(snapshot.data![index].crust),
+                      Text(snapshot.data![index].topping),
+                    ],
+                  ),
+                ),
+              );
             }
             return const Center(
               child: CircularProgressIndicator(),
