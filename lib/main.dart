@@ -4,10 +4,13 @@ import './order_list.dart';
 import './services.dart';
 import './pizza_model.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+
+  // calls the get method
+  var pizzaOrdered = PizzaServices().getPizzaOrders();
 
   @override
   Widget build(BuildContext context) {
@@ -16,33 +19,23 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.amber,
       ),
-      home: const MyHomePage(title: 'Display API'),
+      home: MyHomePage(title: 'Display API', order: pizzaOrdered),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title, required this.order})
+      : super(key: key);
 
   final String title;
+  Future<List<Pizza>> order;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Future<List<Pizza>> order;
-
-  @override
-  void initState() {
-    super.initState();
-    _getPizza();
-  }
-
-  _getPizza() async {
-    PizzaServices().getPizzaOrders;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: FutureBuilder<List<Pizza>>(
-          future: order,
+          future: widget.order,
           builder: (context, snapshot) {
             if (snapshot.hasError) print(snapshot.error);
             return snapshot.hasData
