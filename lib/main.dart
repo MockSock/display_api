@@ -51,6 +51,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 itemCount: snapshot.data!.length,
                 itemBuilder: (context, index) => Container(
                   padding: EdgeInsets.all(8),
+                  child: Column(
+                    children: [
+                      Text(
+                        snapshot.data![index].orderId.toString(),
+                      ),
+                      Text(snapshot.data![index].size),
+                      Text(snapshot.data![index].crust),
+                      Text(snapshot.data![index].topping),
+                    ],
+                  ),
                 ),
               );
             }
