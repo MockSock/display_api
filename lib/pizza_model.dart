@@ -16,7 +16,7 @@ class Country {
 
   factory Country.fromJson(Map<String, dynamic> json) => Country(
         population: json['population'],
-        countryName: json['name.official'],
+        countryName: json['name']['common'],
         capitol: json['capital'],
       );
 }

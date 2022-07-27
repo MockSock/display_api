@@ -14,7 +14,7 @@ class CountryServices implements CountryRepo {
   @override
   Future<List<Country>> getCountries() async {
     Response response = await http.get(_uri);
-    List<Country> country = countryFromJSON(response.body).toList();
+    List<Country> country = countryFromJSON(response.body);
     return country;
   }
 }
