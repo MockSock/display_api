@@ -1,24 +1,22 @@
 import 'dart:convert';
 
-List<Pizza> pizzaFromJSON(String str) =>
-    List<Pizza>.from(json.decode(str).map((x) => Pizza.fromJson(x)));
+List<Country> countryFromJSON(String str) =>
+    List<Country>.from(json.decode(str).map((x) => Country.fromJson(x)));
 
-class Pizza {
-  final int orderId;
-  final String size;
-  final String crust;
-  final String topping;
+class Country {
+  final int population;
+  final String countryName;
+  final String capitol;
 
-  Pizza(
-      {required this.orderId,
-      required this.size,
-      required this.crust,
-      required this.topping});
+  Country({
+    required this.population,
+    required this.countryName,
+    required this.capitol,
+  });
 
-  factory Pizza.fromJson(Map<String, dynamic> json) => Pizza(
-        orderId: json['orderId'],
-        size: json['size'],
-        crust: json['crust'],
-        topping: json['topping'],
+  factory Country.fromJson(Map<String, dynamic> json) => Country(
+        population: json['population'],
+        countryName: json['name.official'],
+        capitol: json['capital'],
       );
 }
