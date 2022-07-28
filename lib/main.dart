@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(snapshot.data![index].countryName),
-                      Text(snapshot.data![index].capitol),
+                      Text(snapshot.data![index].region),
                       Text(
                         snapshot.data![index].population.toString(),
                       ),

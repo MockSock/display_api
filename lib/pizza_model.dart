@@ -6,17 +6,17 @@ List<Country> countryFromJSON(String str) =>
 class Country {
   final int population;
   final String countryName;
-  final String capitol;
+  final String region;
 
   Country({
     required this.population,
     required this.countryName,
-    required this.capitol,
+    required this.region,
   });
 
   factory Country.fromJson(Map<String, dynamic> json) => Country(
         population: json['population'],
         countryName: json['name']['common'],
-        capitol: json['capital'],
+        region: json['region'],
       );
 }
