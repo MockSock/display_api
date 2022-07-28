@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
 
   // calls the get method
-  var pizzaOrdered = PizzaServices().getPizzaOrders();
+  var countries = CountryServices().getCountries();
 
   @override
   Widget build(BuildContext context) {
@@ -18,17 +18,17 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.amber,
       ),
-      home: MyHomePage(title: 'Display API', order: pizzaOrdered),
+      home: MyHomePage(title: 'Display API', country: countries),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title, required this.order})
+  MyHomePage({Key? key, required this.title, required this.country})
       : super(key: key);
 
   final String title;
-  final Future<List<Pizza>> order;
+  final Future<List<Country>> country;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -42,8 +42,8 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: FutureBuilder<List<Pizza>>(
-          future: widget.order,
+        child: FutureBuilder<List<Country>>(
+          future: widget.country,
           builder: (context, snapshot) {
             if (snapshot.hasError) return Text(snapshot.error.toString());
             if (snapshot.hasData) {
@@ -54,12 +54,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      Text(snapshot.data![index].countryName),
+                      Text(snapshot.data![index].region),
                       Text(
-                        snapshot.data![index].orderId.toString(),
+                        snapshot.data![index].population.toString(),
                       ),
-                      Text(snapshot.data![index].size),
-                      Text(snapshot.data![index].crust),
-                      Text(snapshot.data![index].topping),
                     ],
                   ),
                 ),
