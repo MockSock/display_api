@@ -1,15 +1,20 @@
 import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:http/http.dart'; // gets you Response
 
 import './pizza_model.dart';
 
-Future<List<Pizza>> getPizzaOrders() async {
-  // uri links have to be parsed
-  Uri apiUri = Uri.parse('localhost:5000');
-  // it is now checking for it using a get method
-  final response = await http.get(apiUri);
-  // the response is decoded here
-  final responseData = json.decode(response.body);
-  // finally it is returned
-  return responseData;
+abstract class CountryRepo {
+  getCountries();
+}
+
+class CountryServices implements CountryRepo {
+  // website will be restcountries
+  static final Uri _uri = Uri.parse('https://restcountries.com/v3.1/all');
+
+  @override
+  Future<List<Country>> getCountries() async {
+    Response response = await http.get(_uri);
+    List<Country> country = countryFromJSON(response.body);
+    return country;
+  }
 }
