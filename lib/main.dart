@@ -56,10 +56,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(snapshot.data![index].countryName),
-                      Text(snapshot.data![index].region),
+                      Text('Country: ${snapshot.data![index].countryName}'),
+                      Text('Region: ${snapshot.data![index].region}'),
                       Text(
-                        snapshot.data![index].population.toString(),
+                        'Population: ${snapshot.data![index].population.toString()}',
                       ),
                     ],
                   ),
