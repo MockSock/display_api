@@ -50,6 +50,8 @@ class _MyHomePageState extends State<MyHomePage> {
               return ListView.builder(
                 itemCount: snapshot.data!.length,
                 itemBuilder: (context, index) => Container(
+                  color: Colors.greenAccent,
+                  margin: const EdgeInsets.all(10),
                   padding: const EdgeInsets.all(8),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
