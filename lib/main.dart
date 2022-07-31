@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Display API',
       theme: ThemeData(
         primarySwatch: Colors.amber,
@@ -39,7 +40,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Container(
+          alignment: Alignment.center,
+          child: Text(widget.title),
+        ),
       ),
       body: Center(
         child: FutureBuilder<List<Country>>(
